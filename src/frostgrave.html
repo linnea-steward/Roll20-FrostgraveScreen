@@ -1,0 +1,225 @@
+<div class="edit sheetlayout">
+	<div class="wizard">
+		<label for="attr_character_name">Character Name: <input type="text" name="attr_character_name"></label>
+		<div class="statline">
+			<label>
+				Move (M)
+				<input name="attr_Move" type="number" value="6">
+			</label>
+			<label>
+				Fight (F) <input name="attr_Fight" type="number" value="2">
+				<input name="attr_FightBonus" type="number" value="0">
+				<input name="attr_Eff_F" type="hidden" value="@{Fight} + @{FightBonus}">
+				<button type='roll' value="/roll d20 + @{Eff_F}" name='roll_FightCheck'></button>
+			</label>
+			<label>
+				Shoot (S) <input name="attr_Shoot" type="number" value="0">
+				<input name="attr_ShootBonus" type="number" value="0">
+				<input name="attr_Eff_S" type="hidden" value="@{Shoot} + @{ShootBonus}">
+				<button type='roll' value="/roll d20 + @{Eff_S}" name='roll_ShootCheck'></button>
+			</label>
+			<label>
+				Armour (A) <input name="attr_Armour" type="number" value="10">
+			</label>
+			<label>
+				Will (W) <input name="attr_Will" type="number" value="4">
+				<input name="attr_WillBonus" type="number" value="0">
+				<input name="attr_Eff_W" type="hidden" value="@{Will} + @{WillBonus}">
+				<button type='roll' value="/roll d20 + @{Eff_W}" name='roll_WillCheck'></button>
+			</label>
+			<label>
+				Health (H) <input name="attr_Health" type="number" value="14">/
+				<input name="attr_Health_max" type="number" value="14" </label> </div> <div class="wealth">
+				<label>
+					Wealth: <input type="number" name="attr_wealth" value="500">gc
+				</label>
+		</div>
+		<div class="items">
+			<span>Name --------- Bonus -------- Cost --------- Description</span>
+			<fieldset class="repeating_items">
+				<input type="text" name="attr_itemname" placeholder="Name">
+				<span>------</span>
+				<select name="attr_bonustype">
+					<option value="Move">M</option>
+					<option value="Fight">F</option>
+					<option value="Shoot">S</option>
+					<option value="Armour">A</option>
+					<option value="Will">W</option>
+					<option value="Health">H</option>
+				</select>
+				<input name="attr_bonusvalue" type="number" placeholder="0">
+				<span>------</span>
+				<input name="attr_itemcost" type="text" placeholder="Cost">
+				<span>------</span>
+				<textarea name="attr_itemdescription">Description</textarea>
+			</fieldset>
+		</div>
+	</div>
+	<div class="warband">
+		<div class="apprentice">
+			<h3>Apprentice</h3>
+			<label for="attr_apprentice_name">Name: <input type="text" name="attr_apprentice_name"></label>
+			<div class="statline">
+				<label>
+					Move (M)
+					<input name="attr_apprentice_m" type="number" value="6">
+				</label>
+				<label>
+					Fight (F) <input name="attr_apprentice_f" type="number" value="@{Fight}-2">
+				</label>
+				<label>
+					Shoot (S) <input name="attr_apprentice_s" type="number" value="@{Shoot}-2">
+				</label>
+				<label>
+					Armour (A) <input name="attr_apprentice_a" type="number" value="10">
+				</label>
+				<label>
+					Will (W) <input name="attr_apprentice_w" type="number" value="@{Will}-2">
+				</label>
+				<label>
+					Health (H) <input name="attr_apprentice_h" type="number" value="@{Health}-4">
+				</label>
+			</div>
+			<div class="items">
+				<span>Name --------- Bonus -------- Cost --------- Description</span>
+				<fieldset class="repeating_apprenticeitems">
+					<input type="text" name="attr_itemname" placeholder="Name">
+					<span>------</span>
+					<select name="attr_bonustype">
+						<option value="Move">M</option>
+						<option value="Fight">F</option>
+						<option value="Shoot">S</option>
+						<option value="Armour">A</option>
+						<option value="Will">W</option>
+						<option value="Health">H</option>
+					</select>
+					<input name="attr_bonusvalue" type="number" placeholder="0">
+					<span>------</span>
+					<input name="attr_itemcost" type="text" placeholder="Cost">
+					<span>------</span>
+					<textarea name="attr_itemdescription">Description</textarea>
+				</fieldset>
+			</div>
+		</div>
+		<div class="soldiers">
+			<h3>Soldiers</h3>
+			<fieldset class="repeating_soldiers">
+				<label for="attr_soldier_name">Name: <input type="text" name="attr_soldier_name"></label>
+				<select name="attr_soldiertype">
+					<option value="warhound">War Hound</option>
+					<option value="thug">Thug</option>
+					<option value="thief">Thief</option>
+					<option value="archer">Archer</option>
+					<option value="crossbowman">Crossbowman</option>
+					<option value="infantryman">Infantryman</option>
+					<option value="tracker">Tracker</option>
+					<option value="manatarms">Man-at-Arms</option>
+					<option value="treasurehunter">Treasure Hunter</option>
+					<option value="knight">Knight</option>
+					<option value="templar">Templar</option>
+					<option value="ranger">Ranger</option>
+					<option value="barbarian">Barbarian</option>
+					<option value="apothecary">Apothecary</option>
+					<option value="marksman">Marksman</option>
+				</select>
+				<div class="statline">
+					<label>
+						Move (M)
+						<input name="attr_Soldier_Move" type="number" value="0">
+					</label>
+					<label>
+						Fight (F) <input name="attr_Soldier_Fight" type="number" value="0">
+					</label>
+					<label>
+						Shoot (S) <input name="attr_Soldier_Shoot" type="number" value="0">
+					</label>
+					<label>
+						Armour (A) <input name="attr_Soldier_Armour" type="number" value="0">
+					</label>
+					<label>
+						Will (W) <input name="attr_Soldier_Will" type="number" value="0">
+					</label>
+					<label>
+						Health (H) <input name="attr_Soldier_Health" type="number" value="0">
+					</label>
+				</div>
+				<div class="starting_equipment">
+					<textarea name="attr_startingequipment" placeholder="Starting Equipment"></textarea>
+				</div>
+				<div class="items">
+					<span>Name --------- Bonus -------- Cost --------- Description</span>
+					<input type="text" name="attr_Soldier_itemname" placeholder="Name">
+					<span>------</span>
+					<select name="attr_Soldier_bonustype">
+						<option value="Move">M</option>
+						<option value="Fight">F</option>
+						<option value="Shoot">S</option>
+						<option value="Armour">A</option>
+						<option value="Will">W</option>
+						<option value="Health">H</option>
+					</select>
+					<input name="attr_Soldier_bonusvalue" type="number" placeholder="0">
+					<span>------</span>
+					<input name="attr_Soldier_itemcost" type="text" placeholder="Cost">
+					<span>------</span>
+					<textarea name="attr_Soldier_itemdescription">Description</textarea>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</div>
+
+<script type="text/worker">
+	var soldiers = {
+		warhound: {
+			move: 8,
+			
+		},
+		thug: {},
+		thief: {},
+		archer: {},
+		crossbowman: {},
+		infantryman: {},
+		tracker: {},
+		manatarms: {},
+		treasurehunter: {},
+		knight: {},
+		templar: {},
+		ranger: {},
+		barbarian: {},
+		apothecary: {},
+		marksman: {}
+	};
+	on("change:Fight change:FightBonus", function(eventInfo) {
+		getAttrs(["Fight", "FightBonus"], function(values) {
+			setAttrs({
+				Eff_M: parseInt(values.Fight) + parseInt(values.FightBonus)
+			});
+		});
+	});
+	
+	on("change:Shoot change:ShootBonus", function(eventInfo) {
+		getAttrs(["Shoot", "ShootBonus"], function(values) {
+			setAttrs({
+				Eff_M: parseInt(values.Shoot) + parseInt(values.ShootBonus)
+			});
+		});
+	});
+	
+	on("change:Will change:WillBonus", function(eventInfo) {
+		getAttrs(["Will", "WillBonus"], function(values) {
+			setAttrs({
+				Eff_M: parseInt(values.Will) + parseInt(values.WillBonus)
+			});
+		});
+	});
+
+	on("change:repeating_soldiers:soldiertype", function(eventInfo) {
+		console.log('SoldierTypeChanged', eventInfo);
+		getSectionIDs('soldiers', function(ids) {
+			console.log(ids);
+			for(var i in ids) {
+			}
+		});
+	});
+</script>

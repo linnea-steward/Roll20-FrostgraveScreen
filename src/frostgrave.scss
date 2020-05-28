@@ -1,0 +1,42 @@
+.charsheet {
+	.sheet- {
+		&sheetlayout {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		&items {
+			color: blue;
+		}
+
+		&wizard,
+		&warband {
+			width: 100%;
+		}
+
+		&warband {
+			background: rgb(146, 102, 102);
+			display: flex;
+		}
+
+		&apprentice,
+		&soldiers {
+			width: 44%;
+			padding: 0 3%;
+		}
+
+		&statline {
+			display: flex;
+			justify-content: space-evenly;
+			width: 100%;
+
+			label {
+				width: 30%;
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: column;
+				width: auto;
+			}
+		}
+	}
+}
