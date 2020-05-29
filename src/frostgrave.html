@@ -10,13 +10,13 @@
 				Fight (F) <input name="attr_Fight" type="number" value="2">
 				<input name="attr_FightBonus" type="number" value="0">
 				<input name="attr_Eff_F" type="hidden" value="@{Fight} + @{FightBonus}">
-				<button type='roll' value="/roll d20 + @{Eff_F}" name='roll_FightCheck'></button>
+				<button type='roll' value="/roll 1d20 + @{Eff_F}" name='roll_FightCheck'></button>
 			</label>
 			<label>
 				Shoot (S) <input name="attr_Shoot" type="number" value="0">
 				<input name="attr_ShootBonus" type="number" value="0">
 				<input name="attr_Eff_S" type="hidden" value="@{Shoot} + @{ShootBonus}">
-				<button type='roll' value="/roll d20 + @{Eff_S}" name='roll_ShootCheck'></button>
+				<button type='roll' value="/roll 1d20 + @{Eff_S}" name='roll_ShootCheck'></button>
 			</label>
 			<label>
 				Armour (A) <input name="attr_Armour" type="number" value="10">
@@ -25,15 +25,18 @@
 				Will (W) <input name="attr_Will" type="number" value="4">
 				<input name="attr_WillBonus" type="number" value="0">
 				<input name="attr_Eff_W" type="hidden" value="@{Will} + @{WillBonus}">
-				<button type='roll' value="/roll d20 + @{Eff_W}" name='roll_WillCheck'></button>
+				<button type='roll' value="/roll 1d20 + @{Eff_W}" name='roll_WillCheck'></button>
 			</label>
 			<label>
-				Health (H) <input name="attr_Health" type="number" value="14">/
-				<input name="attr_Health_max" type="number" value="14" </label> </div> <div class="wealth">
+				Health (H) <input name="attr_Health" type="number" value="14">
+				<input name="attr_Health_max" type="number" value="14"> 
+			</label> 
+			</div> 
+			<div class="wealth">
 				<label>
 					Wealth: <input type="number" name="attr_wealth" value="500">gc
 				</label>
-		</div>
+			</div>
 		<div class="items">
 			<span>Name --------- Bonus -------- Cost --------- Description</span>
 			<fieldset class="repeating_items">
@@ -173,7 +176,11 @@
 	var soldiers = {
 		warhound: {
 			move: 8,
-			
+			fight: 1,
+			shoot: 0,
+			armour: 10,
+			will: 2,
+			Health: 8,			
 		},
 		thug: {},
 		thief: {},
@@ -190,10 +197,17 @@
 		apothecary: {},
 		marksman: {}
 	};
+	on("change:Move change:MoveBonus", function(eventInfo) {
+		getAttrs(["Move", "MoveBonus"], function(values) {
+			setAttrs({
+				Eff_M: parseInt(values.Move) + parseInt(values.MoveBonus)
+			});
+		});
+	});
 	on("change:Fight change:FightBonus", function(eventInfo) {
 		getAttrs(["Fight", "FightBonus"], function(values) {
 			setAttrs({
-				Eff_M: parseInt(values.Fight) + parseInt(values.FightBonus)
+				Eff_F: parseInt(values.Fight) + parseInt(values.FightBonus)
 			});
 		});
 	});
@@ -201,7 +215,7 @@
 	on("change:Shoot change:ShootBonus", function(eventInfo) {
 		getAttrs(["Shoot", "ShootBonus"], function(values) {
 			setAttrs({
-				Eff_M: parseInt(values.Shoot) + parseInt(values.ShootBonus)
+				Eff_S: parseInt(values.Shoot) + parseInt(values.ShootBonus)
 			});
 		});
 	});
@@ -209,7 +223,7 @@
 	on("change:Will change:WillBonus", function(eventInfo) {
 		getAttrs(["Will", "WillBonus"], function(values) {
 			setAttrs({
-				Eff_M: parseInt(values.Will) + parseInt(values.WillBonus)
+				Eff_W: parseInt(values.Will) + parseInt(values.WillBonus)
 			});
 		});
 	});
